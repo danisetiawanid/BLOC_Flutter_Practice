@@ -80,6 +80,7 @@ class AddScreen extends StatelessWidget {
                         ),
                       ),
                       FormBuilderTextField(
+                        keyboardType: TextInputType.phone,
                         key: phoneFieldKey,
                         controller: controllerPhone,
                         name: 'Phone',

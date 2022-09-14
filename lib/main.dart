@@ -47,7 +47,6 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const HomeScreen(),
           '/add': (context) => const AddScreen(),
-          // '/update': (context) => const UpdateContactScreen(),
         },
         theme: ThemeData(
           primarySwatch: Colors.blue,

@@ -59,19 +59,19 @@ Card _contactCard(BuildContext context, ContactModel contact) {
               Text(
                 'ID : ${contact.id}',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Text(
                 'Name : ${contact.name}',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Text(
                 'Email : ${contact.email}',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Text(
