@@ -4,22 +4,26 @@ class ContactModel extends Equatable {
   final String id;
   final String name;
   final String email;
+  final String phone;
 
   const ContactModel({
     required this.id,
     required this.name,
     required this.email,
+    required this.phone,
   });
 
   ContactModel copyWith({
     String? id,
     String? name,
     String? email,
+    String? phone,
   }) {
     return ContactModel(
       id: id ?? this.id,
       name: name ?? this.name,
       email: email ?? this.email,
+      phone: phone ?? this.phone,
     );
   }
 
@@ -28,6 +32,7 @@ class ContactModel extends Equatable {
         id,
         name,
         email,
+        phone,
       ];
 
   // static List<ContactModel> contacs = [

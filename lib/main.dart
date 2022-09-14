@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_example/bloc/contact_bloc.dart';
-import 'package:flutter_example/model/contact_model.dart';
-import 'package:flutter_example/screens/add_contact_screen.dart';
-import 'package:flutter_example/screens/contact_screen.dart';
+import 'package:flutter_example/screens/add_screen.dart';
+import 'package:flutter_example/screens/home_screen.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 void main() {
@@ -21,17 +20,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ContactBloc()
             ..add(
-              const LoadContacts(contacts: [
-                ContactModel(
-                  id: '1',
-                  name: 'Dani',
-                  email: 'danisetiawan@gmail.com',
-                ),
-                ContactModel(
-                  id: '2',
-                  name: 'Ikhsan',
-                  email: 'Ikhsan@gmail.com',
-                ),
+              const ContactLoad(contacs: [
+                // ContactModel(
+                //   id: "1",
+                //   name: 'Dani',
+                //   email: 'danisetiawan@gmail.com',
+                // ),
+                // ContactModel(
+                //   id: "2",
+                //   name: 'Ikhsan',
+                //   email: 'Ikhsan@gmail.com',
+                // ),
               ]),
             ),
         )
@@ -43,11 +42,11 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: const [
           FormBuilderLocalizations.delegate,
         ],
-        title: 'Flutter Demo',
+        title: 'BLOC Flutter Practice',
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => const ContactScreen(),
-          '/add': (context) => const AddContactScreen(),
+          '/': (context) => const HomeScreen(),
+          '/add': (context) => const AddScreen(),
           // '/update': (context) => const UpdateContactScreen(),
         },
         theme: ThemeData(

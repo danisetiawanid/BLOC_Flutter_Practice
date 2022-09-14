@@ -7,16 +7,16 @@ part 'contact_state.dart';
 
 class ContactBloc extends Bloc<ContactEvent, ContactState> {
   ContactBloc() : super(ContactLoading()) {
-    on<LoadContacts>(_onLoadContacts);
-    on<AddContacts>(_onAddContact);
-    on<DeleteContacts>(_onDeleteContact);
-    on<UpdateContacts>(_onUpdateContact);
+    on<ContactLoad>(_onLoadContact);
+    on<AddContact>(_onAddContact);
+    on<DeleteContact>(_onDeleteContact);
+    on<UpdateContact>(_onUpdateContact);
   }
-  void _onLoadContacts(LoadContacts event, Emitter<ContactState> emit) {
-    emit(ContactLoaded(contacts: event.contacts));
+  void _onLoadContact(ContactLoad event, Emitter<ContactState> emit) {
+    emit(ContactLoaded(contacts: event.contacs));
   }
 
-  void _onAddContact(AddContacts event, Emitter<ContactState> emit) {
+  void _onAddContact(AddContact event, Emitter<ContactState> emit) {
     final state = this.state;
     if (state is ContactLoaded) {
       emit(ContactLoaded(
@@ -25,7 +25,7 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
     }
   }
 
-  void _onDeleteContact(DeleteContacts event, Emitter<ContactState> emit) {
+  void _onDeleteContact(DeleteContact event, Emitter<ContactState> emit) {
     final state = this.state;
     if (state is ContactLoaded) {
       List<ContactModel> contacts = state.contacts.where((contact) {
@@ -35,13 +35,13 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
     }
   }
 
-  void _onUpdateContact(UpdateContacts event, Emitter<ContactState> emit) {
+  void _onUpdateContact(UpdateContact event, Emitter<ContactState> emit) {
     final state = this.state;
     if (state is ContactLoaded) {
-      List<ContactModel> contacts = (state.contacts.map((contact) {
-        return contact.id == event.contact.id ? event.contact : contact;
+      List<ContactModel> contacs = (state.contacts.map((modelData) {
+        return modelData.id == event.contact.id ? event.contact : modelData;
       })).toList();
-      emit(ContactLoaded(contacts: contacts));
+      emit(ContactLoaded(contacts: contacs));
     }
   }
 }

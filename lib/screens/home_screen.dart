@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_example/bloc/contact_bloc.dart';
 import 'package:flutter_example/model/contact_model.dart';
-import 'package:flutter_example/screens/update_contact_screen.dart';
+import 'package:flutter_example/screens/update_screen.dart';
 
-class ContactScreen extends StatelessWidget {
-  const ContactScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ContactScreen extends StatelessWidget {
       ),
       appBar: AppBar(
         title: const Text(
-          'Contact App',
+          'CRUD App',
         ),
       ),
       body: BlocBuilder<ContactBloc, ContactState>(
@@ -58,15 +58,24 @@ Card _contactCard(BuildContext context, ContactModel contact) {
             children: [
               Text(
                 'ID : ${contact.id}',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 4,
               ),
               Text(
                 'Name : ${contact.name}',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 4,
               ),
               Text(
                 'Email : ${contact.email}',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Text(
+                'Phone : ${contact.phone}',
               ),
             ],
           ),
@@ -78,8 +87,7 @@ Card _contactCard(BuildContext context, ContactModel contact) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          UpdateContactScreen(contact: contact),
+                      builder: (context) => UpdateScreen(contact: contact),
                     ),
                   );
                 },
@@ -89,7 +97,7 @@ Card _contactCard(BuildContext context, ContactModel contact) {
                 onPressed: () {
                   context
                       .read<ContactBloc>()
-                      .add(DeleteContacts(contact: contact));
+                      .add(DeleteContact(contact: contact));
                 },
                 icon: const Icon(Icons.cancel),
               ),
